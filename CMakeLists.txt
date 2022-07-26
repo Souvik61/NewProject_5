@@ -43,8 +43,6 @@ if(NOT DEFINED BUILD_ENGINE_DONE) # to test NewProject_5 into root project
     add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos ${ENGINE_BINARY_PATH}/cocos/core)
 endif()
 
-add_subdirectory(Classes/box2d/src)
-
 # record sources, headers, resources...
 set(GAME_SOURCE)
 set(GAME_HEADER)
@@ -57,6 +55,9 @@ if(APPLE OR WINDOWS)
 endif()
 
 # add cross-platforms source files and header files 
+
+add_subdirectory(Classes/box2d/src)
+
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/HelloWorldScene.cpp
