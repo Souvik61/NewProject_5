@@ -61,10 +61,36 @@ add_subdirectory(Classes/box2d/src)
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/HelloWorldScene.cpp
+	 Classes/Phys/B2_PhysicsBody.cpp
+     Classes/Phys/B2_WorldNode.cpp
+     Classes/Phys/DebugDrawNode.cpp
+     Classes/Phys/Utilities.cpp
+     Classes/Phys/DefHelper.cpp
+     Classes/Phys/ShapeHelper.cpp
+     Classes/Phys/SuperPhysHelper.cpp
+     Classes/Tests/TestScene1.cpp
+     Classes/Tests/TestScene2.cpp
+     Classes/Tests/TestScene3.cpp
+     Classes/Tests/TestScene4.cpp
+     Classes/Tests/TestScene5.cpp
+     Classes/Tests/TestScene6.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/HelloWorldScene.h
+	 Classes/Phys/B2_PhysicsBody.h
+     Classes/Phys/B2_WorldNode.h
+     Classes/Phys/DebugDrawNode.h
+	 Classes/Phys/Utilities.h
+	 Classes/Phys/DefHelper.h
+	 Classes/Phys/ShapeHelper.h
+	 Classes/Phys/SuperPhysHelper.h
+	 Classes/Tests/TestScene1.h
+	 Classes/Tests/TestScene2.h
+	 Classes/Tests/TestScene3.h
+	 Classes/Tests/TestScene4.h
+	 Classes/Tests/TestScene5.h
+	 Classes/Tests/TestScene6.h
      )
 
 if(ANDROID)
