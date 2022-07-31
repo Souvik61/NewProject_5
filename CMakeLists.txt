@@ -74,6 +74,9 @@ list(APPEND GAME_SOURCE
      Classes/Tests/TestScene4.cpp
      Classes/Tests/TestScene5.cpp
      Classes/Tests/TestScene6.cpp
+     Classes/Tests/PyramidTest.cpp
+     Classes/Tests/BoxStackTest.cpp
+     Classes/Tests/CircleStackTest.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
@@ -91,6 +94,9 @@ list(APPEND GAME_HEADER
 	 Classes/Tests/TestScene4.h
 	 Classes/Tests/TestScene5.h
 	 Classes/Tests/TestScene6.h
+	 Classes/Tests/PyramidTest.h
+	 Classes/Tests/BoxStackTest.h
+	 Classes/Tests/CircleStackTest.h
      )
 
 if(ANDROID)

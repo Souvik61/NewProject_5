@@ -4,20 +4,20 @@
 
 using namespace rb;
 
-cocos2d::Color4F rb::Utilities::convertToCCColor(b2Color col)
-{
-	return cocos2d::Color4F(col.r, col.g, col.b, col.a);
-}
+//cocos2d::Color4F rb::Utilities::convertToCCColor(b2Color col)
+//{
+//	return cocos2d::Color4F(col.r, col.g, col.b, col.a);
+//}
+//
+//cocos2d::Vec2 rb::Utilities::convertToCCVec2(float ptm_ratio, b2Vec2 vec)
+//{
+//	return cocos2d::Vec2(vec.x * ptm_ratio, vec.y * ptm_ratio);
+//}
 
-cocos2d::Vec2 rb::Utilities::convertToCCVec2(float ptm_ratio, b2Vec2 vec)
-{
-	return cocos2d::Vec2(vec.x * ptm_ratio, vec.y * ptm_ratio);
-}
-
-b2Vec2 rb::Utilities::convertToB2Vec2(float ptm_ratio, cocos2d::Vec2 vec)
-{
-	return b2Vec2(vec.x / ptm_ratio, vec.y / ptm_ratio);
-}
+//b2Vec2 rb::Utilities::convertToB2Vec2(float ptm_ratio, cocos2d::Vec2 vec)
+//{
+//	return b2Vec2(vec.x / ptm_ratio, vec.y / ptm_ratio);
+//}
 
 cocos2d::Vec2* rb::Utilities::convertToCCVecArr(const b2Vec2* bVec, int size, float ptm_ratio)
 {
@@ -41,26 +41,3 @@ b2Vec2* rb::Utilities::convertToB2VecArr(cocos2d::Vec2* inArray, int size, float
 	return vec;
 }
 
-
-void Utilities::b2LinearStiffness(float& stiffness, float& damping, float frequencyHertz, float dampingRatio, const b2Body* bodyA, const b2Body* bodyB)
-{
-	float massA = bodyA->GetMass();
-	float massB = bodyB->GetMass();
-	float mass;
-	if (massA > 0.0f && massB > 0.0f)
-	{
-		mass = massA * massB / (massA + massB);
-	}
-	else if (massA > 0.0f)
-	{
-		mass = massA;
-	}
-	else
-	{
-		mass = massB;
-	}
-
-	float omega = 2.0f * b2_pi * frequencyHertz;
-	stiffness = mass * omega * omega;
-	damping = 2.0f * mass * dampingRatio * omega;
-}

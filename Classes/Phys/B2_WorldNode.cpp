@@ -52,15 +52,15 @@ void rb::B2WorldNode::setDebugDrawNode(DebugDrawNode* draw)
 }
 
 
-inline b2Vec2 B2WorldNode::convertToB2Vector(cocos2d::Vec2 vec)
-{
-	return b2Vec2(vec.x / PTM_RATIO, vec.y / PTM_RATIO);
-}
-
-inline cocos2d::Vec2 B2WorldNode::convertToCCVector(b2Vec2 vec)
-{
-	return cocos2d::Vec2(vec.x * PTM_RATIO, vec.y * PTM_RATIO);
-}
+//inline b2Vec2 B2WorldNode::convertToB2Vector(cocos2d::Vec2 vec)
+//{
+//	return b2Vec2(vec.x / PTM_RATIO, vec.y / PTM_RATIO);
+//}
+//
+//inline cocos2d::Vec2 B2WorldNode::convertToCCVector(b2Vec2 vec)
+//{
+//	return cocos2d::Vec2(vec.x * PTM_RATIO, vec.y * PTM_RATIO);
+//}
 
 //Create functions
 

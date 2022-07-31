@@ -2,11 +2,12 @@
 #define __B2_WORLDNODE_H__
 
 #include "cocos2d.h"
+#include "box2d/include/box2d/b2_math.h"
+
 USING_NS_CC;
 
 class b2Body;
 class b2World;
-struct b2Vec2;
 struct b2BodyDef;
 struct b2JointDef;
 class b2Joint;
@@ -39,8 +40,9 @@ namespace rb {
         virtual void setPosition(float x, float y) override;
         virtual void updateWorld(float);
 
-        inline b2Vec2 convertToB2Vector(cocos2d::Vec2 vec);
-        inline cocos2d::Vec2 convertToCCVector(b2Vec2 vec);
+        inline b2Vec2 convertToB2Vector(cocos2d::Vec2 vec) { return b2Vec2(vec.x / PTM_RATIO, vec.y / PTM_RATIO); };
+
+        inline cocos2d::Vec2 convertToCCVector(b2Vec2 vec) { return cocos2d::Vec2(vec.x * PTM_RATIO, vec.y * PTM_RATIO); };
 
         inline b2World* getPhysicsWorld() { return _b2World; };
         inline b2World* getB2World() { return _b2World; };

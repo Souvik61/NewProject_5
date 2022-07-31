@@ -4,6 +4,9 @@
 #include "Tests/TestScene4.h"
 #include "Tests/TestScene5.h"
 #include "Tests/TestScene6.h"
+#include "Tests/PyramidTest.h"
+#include "Tests/BoxStackTest.h"
+#include "Tests/CircleStackTest.h"
 
 // #define USE_AUDIO_ENGINE 1
 
@@ -79,7 +82,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //auto scene = TestScene3::createScene();
     //auto scene = TestScene4::createScene();
     //auto scene = TestScene5::createScene();
-    auto scene = TestScene6::createScene();
+    //auto scene = PyramidTest::createScene();
+    //auto scene = BoxStackTest::createScene();
+    auto scene = CircleStackTest::createScene();
 
     // run
     director->runWithScene(scene);

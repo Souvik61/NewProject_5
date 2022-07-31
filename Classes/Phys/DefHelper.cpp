@@ -47,10 +47,3 @@ b2WheelJointDef rb::DefHelper::createWheelJointDef(float ptm, B2PhysicsBody* bod
 	def.Initialize(bodyA->getBox2dBody(), bodyB->getBox2dBody(), Utilities::convertToB2Vec2(ptm, wAnch), Utilities::convertToB2Vec2(1, wAxis));//Conversion factor 1 for axis
 	return def;
 }
-
-b2FrictionJointDef rb::DefHelper::createFrictionJointDef(float ptm, B2PhysicsBody* bodyA, B2PhysicsBody* bodyB, Vec2 anch)
-{
-	b2FrictionJointDef def;
-	def.Initialize(bodyA->getBox2dBody(), bodyB->getBox2dBody(), Utilities::convertToB2Vec2(ptm, anch));
-	return def;
-}
