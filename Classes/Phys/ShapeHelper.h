@@ -8,6 +8,8 @@ class b2ChainShape;
 class b2CircleShape;
 class b2EdgeShape;
 
+USING_NS_CC;
+
 namespace rb {
 
     class B2PhysicsBody;
@@ -34,6 +36,13 @@ namespace rb {
         static b2PolygonShape createPolygonShape(float ptm_ratio, cocos2d::Vec2* points, int count);
         static b2EdgeShape createSegmentShape(float ptm_ratio, cocos2d::Vec2 pointA, cocos2d::Vec2 pointB);
         //static b2ChainShape createEdgePolygonShape2(float ptm_ratio, cocos2d::Vec2* points, int count);
+
+        /*
+        *For simple shapes --set by reference
+        */
+        static void initCircleShapeBy(b2CircleShape& shape, float ptm_ratio, float radius);
+        static void initBoxShapeBy(b2PolygonShape& shape, float ptm_ratio, float hx, float hy, const Vec2& center, float angle);
+
     };
 }
 

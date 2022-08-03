@@ -13,6 +13,11 @@ b2BodyDef rb::DefHelper::createWithPos(float ptm_ratio, cocos2d::Vec2 pos)
 	return def;
 }
 
+void rb::DefHelper::initWithPos(b2BodyDef& def, float ptm_ratio, const cocos2d::Vec2&  pos)
+{
+	def.position = Utilities::convertToB2Vec2(ptm_ratio, pos);
+}
+
 b2DistanceJointDef rb::DefHelper::createDistanceJointDef(float pTM, B2PhysicsBody* bodyA, B2PhysicsBody* bodyB, Vec2 anchorA, Vec2 anchorB)
 {
 	b2DistanceJointDef def;

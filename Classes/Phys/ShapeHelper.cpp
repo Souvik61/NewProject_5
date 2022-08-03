@@ -140,6 +140,20 @@ b2EdgeShape rb::ShapeHelper::createSegmentShape(float ptm_ratio, Vec2 pointA, Ve
 	return shape;
 }
 
+//----------------------------------
+//Initialise by reference functions
+//----------------------------------
+
+void rb::ShapeHelper::initCircleShapeBy(b2CircleShape& shape, float ptm, float radius)
+{
+	shape.m_radius = radius / ptm;
+}
+
+void rb::ShapeHelper::initBoxShapeBy(b2PolygonShape& shape, float ptm, float hx, float hy, const Vec2& c, float ang)
+{
+	shape.SetAsBox(hx / ptm, hy / ptm, Utilities::convertToB2Vec2(ptm, c), ang);
+}
+
 //b2ChainShape rb::ShapeHelper::createEdgePolygonShape2(float ptm_ratio, cocos2d::Vec2* points, int count)
 //{
 //	b2ChainShape shape;
