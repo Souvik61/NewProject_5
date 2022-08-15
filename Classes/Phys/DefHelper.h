@@ -49,6 +49,11 @@ namespace rb {
             return def;
         }
     
+        //Joint helpers --pass by reference
+        static void initRevoluteJointDef(float ptm_ratio,b2RevoluteJointDef& joint, B2PhysicsBody* bodyA, B2PhysicsBody* bodyB, cocos2d::Vec2 anchor);
+        
+        static void initPrismaticJointDef(float ptm_ratio, b2PrismaticJointDef& def, B2PhysicsBody* bodyA, B2PhysicsBody* bodyB, cocos2d::Vec2 anchor, cocos2d::Vec2 axis);
+
         //Others
 
         //static void setMassDataDef(b2MassData data,);

@@ -42,6 +42,15 @@ namespace rb {
         */
         static void initCircleShapeBy(b2CircleShape& shape, float ptm_ratio, float radius);
         static void initBoxShapeBy(b2PolygonShape& shape, float ptm_ratio, float hx, float hy, const Vec2& center, float angle);
+        
+        //Box
+        
+        static void initPolygonShapeWithBox(b2PolygonShape& shape, float ptm_ratio, float hx, float hy, const Vec2& center, float angle);
+        static void initPolygonShapeWithBox(b2PolygonShape& shape, float ptm_ratio, float hx, float hy);
+
+        //Edge
+
+        static void initEdgeShapeSetTwoSided(b2EdgeShape& shape, float ptm_ratio, Vec2 v1, Vec2 hv2);
 
     };
 }

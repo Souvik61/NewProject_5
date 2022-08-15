@@ -60,6 +60,7 @@ add_subdirectory(Classes/box2d/src)
 
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
+	 Classes/Helpers.cpp
      Classes/HelloWorldScene.cpp
 	 Classes/Phys/B2_PhysicsBody.cpp
      Classes/Phys/B2_WorldNode.cpp
@@ -78,9 +79,13 @@ list(APPEND GAME_SOURCE
      Classes/Tests/BoxStackTest.cpp
      Classes/Tests/CircleStackTest.cpp
      Classes/Tests/AddPairTest.cpp
+     Classes/Demos/BaseDemo.cpp
+     Classes/Demos/BodyTypesDemo.cpp
+     Classes/Demos/BreakableBodyDemo.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
+     Classes/Helpers.h
      Classes/HelloWorldScene.h
 	 Classes/Phys/B2_PhysicsBody.h
      Classes/Phys/B2_WorldNode.h
@@ -99,6 +104,9 @@ list(APPEND GAME_HEADER
 	 Classes/Tests/BoxStackTest.h
 	 Classes/Tests/CircleStackTest.h
 	 Classes/Tests/AddPairTest.h
+	 Classes/Demos/BaseDemo.h
+	 Classes/Demos/BodyTypesDemo.h
+	 Classes/Demos/BreakableBodyDemo.h
      )
 
 if(ANDROID)

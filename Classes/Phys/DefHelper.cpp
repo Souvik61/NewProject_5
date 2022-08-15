@@ -52,3 +52,13 @@ b2WheelJointDef rb::DefHelper::createWheelJointDef(float ptm, B2PhysicsBody* bod
 	def.Initialize(bodyA->getBox2dBody(), bodyB->getBox2dBody(), Utilities::convertToB2Vec2(ptm, wAnch), Utilities::convertToB2Vec2(1, wAxis));//Conversion factor 1 for axis
 	return def;
 }
+
+void rb::DefHelper::initRevoluteJointDef(float ptm, b2RevoluteJointDef& j, B2PhysicsBody* bodyA, B2PhysicsBody* bodyB, cocos2d::Vec2 anc)
+{
+	j.Initialize(bodyA->getBox2dBody(), bodyB->getBox2dBody(), Utilities::convertToB2Vec2(ptm, anc));
+}
+
+void rb::DefHelper::initPrismaticJointDef(float ptm, b2PrismaticJointDef& def, B2PhysicsBody* bodyA, B2PhysicsBody* bodyB, cocos2d::Vec2 anc, cocos2d::Vec2 axis)
+{
+	def.Initialize(bodyA->getBox2dBody(), bodyB->getBox2dBody(), Utilities::convertToB2Vec2(ptm, anc), Utilities::convertToB2Vec2(1, axis));
+}

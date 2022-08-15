@@ -154,6 +154,21 @@ void rb::ShapeHelper::initBoxShapeBy(b2PolygonShape& shape, float ptm, float hx,
 	shape.SetAsBox(hx / ptm, hy / ptm, Utilities::convertToB2Vec2(ptm, c), ang);
 }
 
+void rb::ShapeHelper::initPolygonShapeWithBox(b2PolygonShape& shape, float ptm, float hx, float hy, const Vec2& c, float ang)
+{
+	shape.SetAsBox(hx / ptm, hy / ptm, Utilities::convertToB2Vec2(ptm, c), ang);
+}
+
+void rb::ShapeHelper::initPolygonShapeWithBox(b2PolygonShape& shape, float ptm, float hx, float hy)
+{
+	shape.SetAsBox(hx / ptm, hy / ptm);
+}
+
+void rb::ShapeHelper::initEdgeShapeSetTwoSided(b2EdgeShape& shape, float ptm, Vec2 v1, Vec2 v2)
+{
+	shape.SetTwoSided(Utilities::convertToB2Vec2(ptm, v1), Utilities::convertToB2Vec2(ptm, v2));
+}
+
 //b2ChainShape rb::ShapeHelper::createEdgePolygonShape2(float ptm_ratio, cocos2d::Vec2* points, int count)
 //{
 //	b2ChainShape shape;
