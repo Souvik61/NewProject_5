@@ -10,6 +10,7 @@
 #include "Tests/AddPairTest.h"
 #include "Demos/BaseDemo.h"
 #include "Demos/BodyTypesDemo.h"
+#include "Demos/BreakableBodyDemo.h"
 
 // #define USE_AUDIO_ENGINE 1
 
@@ -90,7 +91,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //auto scene = CircleStackTest::createScene();
     //auto scene = AddPairTest::createScene();
     //auto scene = BaseDemo::createScene();
-    auto scene = BodyTypesDemo::createScene();
+    //auto scene = BodyTypesDemo::createScene();
+    auto scene = BreakableBodyDemo::createScene();
 
     // run
     director->runWithScene(scene);

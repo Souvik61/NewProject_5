@@ -1,4 +1,4 @@
-#include "Demos/BodyTypesDemo.h"
+#include "Demos/BreakableBodyDemo.h"
 #include "Phys/SuperPhysHelper.h"
 #include "Phys/B2_PhysicsBody.h"
 #include "Phys/DefHelper.h"
@@ -7,110 +7,123 @@
 USING_NS_CC;
 using namespace rb;
 
-Scene* BodyTypesDemo::createScene()
+Scene* BreakableBodyDemo::createScene()
 {
-    return BodyTypesDemo::create();
+    return BreakableBodyDemo::create();
 }
 
-bool BodyTypesDemo::init()
+bool BreakableBodyDemo::init()
 {
     if (!BaseDemo::init())
     {
         return false;
     }
 
-    //auto s1 = _director->getVisibleSize();
-    //auto s2 = _director->getWinSizeInPixels();
-    //auto s3 = _director->getWinSize();
-    //auto s4 = _director->getOpenGLView()->getDesignResolutionSize();
-    //
-    //CCLOG("Visible size:x:%f, y:%f", s1.width, s1.height);
-    //CCLOG("WinSize in pixels:x:%f, y:%f", s2.width, s2.height);
-    //CCLOG("WinSize size:x:%f, y:%f", s3.width, s3.height);
-    //CCLOG("Design size:x:%f, y:%f", s4.width, s4.height);
+	// Ground body
+	{
+		b2BodyDef bd;
+		auto groundComp = wN->createPhysicsBodyComp(&bd);
 
-    wN->getB2World()->SetGravity(b2Vec2(0, -9));
+		b2EdgeShape shape;
+		ShapeHelper::initEdgeShapeSetTwoSided(shape, 100, Vec2(-4000, 0), Vec2(4000, 0));
+		groundComp->createFixture(&shape, 0.0f);
 
-    Node* attachNode = Node::create();
-    addChild(attachNode);
-    B2PhysicsBody* attachComp, * groundComp;
+		auto node = Node::create();
+		addChild(node);
+		node->addComponent(groundComp);
+	}
 
-    //Create ground
-    {
-        b2BodyDef bd;
-        groundComp = wN->createPhysicsBodyComp(&bd);
-
-        b2EdgeShape eshape;
-        ShapeHelper::initEdgeShapeSetTwoSided(eshape, pTM, Vec2(-500, 0), Vec2(500, 0));
-
-        b2FixtureDef fd;
-        fd.shape = &eshape;
-
-        groundComp->createFixture(&fd);
-
-        auto ground = Node::create();
-        addChild(ground);
-        ground->addComponent(groundComp);
-
-        groundComp->setPosition(visibleSize.width / 2 + origin.x, origin.y);
-    }
-
-    //Create attachment
-    {
-        b2BodyDef bd;
-        DefHelper::initWithPos(bd, pTM, Vec2(visibleSize.width / 2 + origin.x, 300));
-        bd.type = b2_dynamicBody;
-        attachComp = wN->createPhysicsBodyComp(&bd);
-        attachNode->addComponent(attachComp);
-
-        b2PolygonShape shape;
-        ShapeHelper::initPolygonShapeWithBox(shape, pTM, 50, 200);
-        attachComp->createFixture(&shape, 2.0f);
-    }
-
-    //Create platform
-    {
-        b2BodyDef bd1;
-        DefHelper::initWithPos(bd1, pTM, Vec2((visibleSize.width / 2 + origin.x) - 400, origin.y + 500));
-        bd1.type = b2_dynamicBody;
-        auto platComp = wN->createPhysicsBodyComp(&bd1);//Creates the body
-
-        b2PolygonShape shape;
-        ShapeHelper::initPolygonShapeWithBox(shape, pTM, 50, 400, Vec2(400, 0), 0.5 * b2_pi);
-
-        b2FixtureDef fd1;
-        fd1.shape = &shape;
-        fd1.friction = 0.6f;
-        fd1.density = 2.0f;
-        platComp->createFixture(&fd1);
-
-        auto box = Node::create();
-        box->addComponent(platComp);
-        addChild(box);
-        //platComp->setPosition(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y);
-
-        //Create joints
-
-        b2RevoluteJointDef rjd;
-        DefHelper::initRevoluteJointDef(pTM, rjd, attachComp, platComp, Vec2(visibleSize.width / 2 + origin.x, origin.y + 500));
-        rjd.maxMotorTorque = 100;
-        rjd.enableMotor = true;
-        wN->createJoint(&rjd);
-
-
-        b2PrismaticJointDef pjd;
-        //pjd.Initialize(ground, m_platform, b2Vec2(0.0f, 5.0f), b2Vec2(1.0f, 0.0f));
-
-        DefHelper::initPrismaticJointDef(pTM, pjd, groundComp, platComp, Vec2(visibleSize.width / 2 + origin.x, origin.y + 500), Vec2::UNIT_X);
-        pjd.maxMotorForce = 1000.0f;
-        pjd.enableMotor = true;
-        pjd.lowerTranslation = Utilities::convertToB2Float(100, -1000.0f);
-        pjd.upperTranslation = Utilities::convertToB2Float(100, 1000.0f);
-        pjd.enableLimit = true;
-
-        wN->createJoint(&pjd);
-    }
-
+	// Breakable dynamic body
+	//{
+	//	b2BodyDef bd;
+	//	bd.type = b2_dynamicBody;
+	//	bd.position.Set(0.0f, 40.0f);
+	//	bd.angle = 0.25f * b2_pi;
+	//	m_body1 = m_world->CreateBody(&bd);
+	//
+	//	m_shape1.SetAsBox(0.5f, 0.5f, b2Vec2(-0.5f, 0.0f), 0.0f);
+	//	m_piece1 = m_body1->CreateFixture(&m_shape1, 1.0f);
+	//
+	//	m_shape2.SetAsBox(0.5f, 0.5f, b2Vec2(0.5f, 0.0f), 0.0f);
+	//	m_piece2 = m_body1->CreateFixture(&m_shape2, 1.0f);
+	//}
+	//
+	//m_break = false;
+	//m_broke = false;
 
     return true;
 }
+void BreakableBodyDemo::PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
+{
+	//if (m_broke)
+	//{
+	//	// The body already broke.
+	//	return;
+	//}
+	//
+	//// Should the body break?
+	//int32 count = contact->GetManifold()->pointCount;
+	//
+	//float maxImpulse = 0.0f;
+	//for (int32 i = 0; i < count; ++i)
+	//{
+	//	maxImpulse = b2Max(maxImpulse, impulse->normalImpulses[i]);
+	//}
+	//
+	//if (maxImpulse > 40.0f)
+	//{
+	//	// Flag the body for breaking.
+	//	m_break = true;
+	//}
+}
+
+void BreakableBodyDemo::Break()
+{
+	// Create two bodies from one.
+	//b2Body* body1 = m_piece1->GetBody();
+	//b2Vec2 center = body1->GetWorldCenter();
+	//
+	//body1->DestroyFixture(m_piece2);
+	//m_piece2 = NULL;
+	//
+	//b2BodyDef bd;
+	//bd.type = b2_dynamicBody;
+	//bd.position = body1->GetPosition();
+	//bd.angle = body1->GetAngle();
+	//
+	//b2Body* body2 = m_world->CreateBody(&bd);
+	//m_piece2 = body2->CreateFixture(&m_shape2, 1.0f);
+	//
+	//// Compute consistent velocities for new bodies based on
+	//// cached velocity.
+	//b2Vec2 center1 = body1->GetWorldCenter();
+	//b2Vec2 center2 = body2->GetWorldCenter();
+	//
+	//b2Vec2 velocity1 = m_velocity + b2Cross(m_angularVelocity, center1 - center);
+	//b2Vec2 velocity2 = m_velocity + b2Cross(m_angularVelocity, center2 - center);
+	//
+	//body1->SetAngularVelocity(m_angularVelocity);
+	//body1->SetLinearVelocity(velocity1);
+	//
+	//body2->SetAngularVelocity(m_angularVelocity);
+	//body2->SetLinearVelocity(velocity2);
+}
+
+//void BreakableBodyDemo::Step(Settings& settings)
+//{
+	//if (m_break)
+	//{
+	//	Break();
+	//	m_broke = true;
+	//	m_break = false;
+	//}
+	//
+	//// Cache velocities to improve movement on breakage.
+	//if (m_broke == false)
+	//{
+	//	m_velocity = m_body1->GetLinearVelocity();
+	//	m_angularVelocity = m_body1->GetAngularVelocity();
+	//}
+	//
+	//Test::Step(settings);
+//}

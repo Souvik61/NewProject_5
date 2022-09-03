@@ -14,7 +14,7 @@ namespace rb{
 //Base class for demos
 //Includes camera panning,zooming
 //Click to drag bodies
-class BaseDemo : public cocos2d::Scene
+class BaseDemo : public cocos2d::Scene, public b2ContactListener
 {
 	//Mouse joint query callback class
 	class QueryCallback : public b2QueryCallback
@@ -53,34 +53,34 @@ private:
 	b2MouseJoint* m_mouseJoint;
 	rb::B2PhysicsBody* m_groundBody;
 protected:
-    int pTM;
-    bool isM1Held;
-    float zoomScale;
-    Camera* defaultCam;
-    Vec2 touchStart, prevTouch, origin;
-    Size visibleSize, winSize;
-    EventListenerMouse* mListener;
-    rb::B2WorldNode* wN;
+	int pTM;
+	bool isM1Held;
+	float zoomScale;
+	Camera* defaultCam;
+	Vec2 touchStart, prevTouch, origin;
+	Size visibleSize, winSize;
+	EventListenerMouse* mListener;
+	rb::B2WorldNode* wN;
 
 	//test
 	Vec2 camStart, camOffset;
 public:
-    static cocos2d::Scene* createScene();
+	static cocos2d::Scene* createScene();
 
-    virtual bool init();
-  
-    
-    // implement the "static create()" method manually
-    CREATE_FUNC(BaseDemo);
+	virtual bool init();
 
 
-    //Input functions
+	// implement the "static create()" method manually
+	CREATE_FUNC(BaseDemo);
 
-    //Mouse Inputs
-    void onMouseDown(cocos2d::EventMouse* event);
-    void onMouseMove(cocos2d::EventMouse* event);
-    void onMouseUp(cocos2d::EventMouse* event);
-    void onMouseScroll(cocos2d::EventMouse* event);
+
+	//Input functions
+
+	//Mouse Inputs
+	void onMouseDown(cocos2d::EventMouse* event);
+	void onMouseMove(cocos2d::EventMouse* event);
+	void onMouseUp(cocos2d::EventMouse* event);
+	void onMouseScroll(cocos2d::EventMouse* event);
 
 
 	//test

@@ -41,6 +41,7 @@ bool BaseDemo::init()
     //Create world node
     wN = B2WorldNode::create(pTM, Vec2(0, 0));
     wN->retain();
+    wN->getB2World()->SetContactListener(this);
     //this->addChild(wN, 9999999);
 
     //Set debug draw node
@@ -49,10 +50,12 @@ bool BaseDemo::init()
     dDN->SetFlags(b2Draw::e_shapeBit | b2Draw::e_jointBit);
     wN->setDebugDrawNode(dDN);
 
+
+
     //Create a dummy body
-    b2BodyDef def = DefHelper::createWithPos(pTM);
-    m_groundBody = wN->createPhysicsBodyComp(def);
-    m_groundBody->retain();
+    //b2BodyDef def = DefHelper::createWithPos(pTM);
+    //m_groundBody = wN->createPhysicsBodyComp(def);
+    //m_groundBody->retain();
 
     //Test
 
