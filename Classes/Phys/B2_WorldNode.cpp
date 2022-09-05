@@ -43,6 +43,9 @@ void B2WorldNode::updateWorld(float dt)
 	//CCLOG("Update world");
 	//_b2World->DrawDebugData();
 	_b2World->DebugDraw();
+
+	//Callback for step
+	_stepCallback(dt);
 }
 
 

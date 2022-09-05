@@ -87,6 +87,7 @@ list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/Helpers.h
      Classes/HelloWorldScene.h
+	 Classes/Phys/RbMacros.h
 	 Classes/Phys/B2_PhysicsBody.h
      Classes/Phys/B2_WorldNode.h
      Classes/Phys/DebugDrawNode.h

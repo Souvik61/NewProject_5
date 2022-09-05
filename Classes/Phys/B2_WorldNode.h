@@ -27,7 +27,8 @@ namespace rb {
     private:
         b2World* _b2World;
         cocos2d::Scheduler* custScheduler;
-
+        //Callbacks
+        std::function<void(float)> _stepCallback;
     public:
         static float PTM_RATIO;
         int velIters = 6;
@@ -48,6 +49,7 @@ namespace rb {
         inline b2World* getB2World() { return _b2World; };
 
         void setDebugDrawNode(DebugDrawNode* dN);
+        void setStepCallback(const std::function<void(float)>& c) { _stepCallback = c; }
 
         //static B2WorldNode* create(Vec2 ptm_ratio);
         static B2WorldNode* create(float ptm_ratio, Vec2 gravity);

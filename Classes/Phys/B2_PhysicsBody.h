@@ -2,12 +2,12 @@
 #define __B2_PHYSICSBODY_H__
 
 #include "cocos2d.h"
+#include "Phys/RbMacros.h"
 #include "box2d/include/box2d/box2d.h"
 #include "Phys/B2_WorldNode.h"
 #include "box2d/include/box2d/b2_body.h"
 
 USING_NS_CC;
-
 
     struct b2Vec2;
     class b2Body;
@@ -53,12 +53,16 @@ USING_NS_CC;
             void setPosition(cocos2d::Vec2 position);
             //Faster than Vec2 version
             void setPosition(float x, float y);
-            inline float getPositionX() { return _body->GetPosition().x* _b2World->PTM_RATIO; };
-            inline float getPositionY() { return _body->GetPosition().y* _b2World->PTM_RATIO; };
+            inline float getPositionX() { return _body->GetPosition().x * _b2World->PTM_RATIO; };
+            inline float getPositionY() { return _body->GetPosition().y * _b2World->PTM_RATIO; };
             inline cocos2d::Vec2 getPosition() { return Vec2(getPositionX(), getPositionY()); }
             void setBodyType(b2BodyType type);
             void setLinearVelocity(cocos2d::Vec2 velocity);
-            
+            inline void setAngularVelocity(float vel) { _body->SetAngularVelocity(vel); }
+
+            //getters
+            cocos2d::Vec2 getLinearVelocity() { return B2TOCCVEC2(_body->GetLinearVelocity()); }
+
             //Add force
             //Note this uses box2d units for forces but worldPoint is in cocos2d coords
             void applyForce(Vec2 force, Vec2 worldPoint, bool wake);
@@ -72,10 +76,10 @@ USING_NS_CC;
 
             //static B2PhysicsBody* create(b2BodyDef bodyDef);
             //static B2PhysicsBody* create(b2Body*);
-            static B2PhysicsBody* create(b2Body*,B2WorldNode*);
+            static B2PhysicsBody* create(b2Body*, B2WorldNode*);
 
             //Calls b2createfixture internally
-            b2Fixture* createFixture(const b2Shape*,float density);
+            b2Fixture* createFixture(const b2Shape*, float density);
             b2Fixture* createFixture(b2FixtureDef* fixtureDef);
 
             //CreateWithShape Helpers

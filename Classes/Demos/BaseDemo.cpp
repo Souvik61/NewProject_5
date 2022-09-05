@@ -51,11 +51,10 @@ bool BaseDemo::init()
     wN->setDebugDrawNode(dDN);
 
 
-
     //Create a dummy body
-    //b2BodyDef def = DefHelper::createWithPos(pTM);
-    //m_groundBody = wN->createPhysicsBodyComp(def);
-    //m_groundBody->retain();
+    b2BodyDef def = DefHelper::createWithPos(pTM);
+    m_groundBody = wN->createPhysicsBodyComp(def);
+    m_groundBody->retain();
 
     //Test
 
