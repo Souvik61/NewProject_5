@@ -144,7 +144,7 @@ void BreakableBodyDemo::Step(float)
 	// Cache velocities to improve movement on breakage.
 	if (m_broke == false)
 	{
-		m_velocity = m_body1->getLinearVelocity();
-		m_angularVelocity = m_body1->getBox2dBody()->GetAngularVelocity();
+		m_velocity = m_body1->getBox2dBody()->GetLinearVelocity();
+		m_angularVelocity = m_body1->getAngularVelocity();
 	}
 }

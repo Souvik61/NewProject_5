@@ -82,10 +82,10 @@ void rb::B2PhysicsBody::setBodyType(b2BodyType type)
     _body->SetType(type);
 }
 
-void rb::B2PhysicsBody::setLinearVelocity(cocos2d::Vec2 vel)
-{
-    _body->SetLinearVelocity(Utilities::convertToB2Vec2(_b2World->PTM_RATIO, vel));
-}
+//void rb::B2PhysicsBody::setLinearVelocity(cocos2d::Vec2 vel)
+//{
+//    _body->SetLinearVelocity(Utilities::convertToB2Vec2(_b2World->PTM_RATIO, vel));
+//}
 
 void rb::B2PhysicsBody::applyForce(Vec2 force, Vec2 wP, bool wake)
 {

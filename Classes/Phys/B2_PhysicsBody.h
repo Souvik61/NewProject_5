@@ -57,11 +57,15 @@ USING_NS_CC;
             inline float getPositionY() { return _body->GetPosition().y * _b2World->PTM_RATIO; };
             inline cocos2d::Vec2 getPosition() { return Vec2(getPositionX(), getPositionY()); }
             void setBodyType(b2BodyType type);
-            void setLinearVelocity(cocos2d::Vec2 velocity);
+            void setLinearVelocity(cocos2d::Vec2 velocity) { _body->SetLinearVelocity(CCTOB2VEC2(velocity)); }
             inline void setAngularVelocity(float vel) { _body->SetAngularVelocity(vel); }
 
             //getters
+            
+            //Get velocity in pixel unit 
             cocos2d::Vec2 getLinearVelocity() { return B2TOCCVEC2(_body->GetLinearVelocity()); }
+            //Get angular velocity in radians
+            float getAngularVelocity() { return _body->GetAngularVelocity(); }
 
             //Add force
             //Note this uses box2d units for forces but worldPoint is in cocos2d coords
