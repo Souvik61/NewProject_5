@@ -21,6 +21,7 @@ B2WorldNode::~B2WorldNode()
 // on "init" you need to initialize your instance
 bool B2WorldNode::init()
 {
+	_hasStepCallback = false;
 	//Create a custom scheduler
 	custScheduler = new Scheduler();
 	_director->getScheduler()->scheduleUpdate(custScheduler, -1, false);
@@ -45,7 +46,8 @@ void B2WorldNode::updateWorld(float dt)
 	_b2World->DebugDraw();
 
 	//Callback for step
-	_stepCallback(dt);
+	if (_hasStepCallback)
+		_stepCallback(dt);
 }
 
 

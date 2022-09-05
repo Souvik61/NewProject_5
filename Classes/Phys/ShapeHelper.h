@@ -50,7 +50,7 @@ namespace rb {
 
         //Edge
 
-        static void initEdgeShapeSetTwoSided(b2EdgeShape& shape, float ptm_ratio, Vec2 v1, Vec2 hv2);
+        static void initEdgeShapeSetTwoSided(b2EdgeShape& shape, float ptm_ratio, Vec2 v1, Vec2 v2);
 
     };
 }

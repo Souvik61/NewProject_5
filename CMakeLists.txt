@@ -82,6 +82,8 @@ list(APPEND GAME_SOURCE
      Classes/Demos/BaseDemo.cpp
      Classes/Demos/BodyTypesDemo.cpp
      Classes/Demos/BreakableBodyDemo.cpp
+     Classes/Demos/ConveyorBeltDemo.cpp
+	 Classes/Demos/DominosDemo.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
@@ -108,6 +110,8 @@ list(APPEND GAME_HEADER
 	 Classes/Demos/BaseDemo.h
 	 Classes/Demos/BodyTypesDemo.h
 	 Classes/Demos/BreakableBodyDemo.h
+	 Classes/Demos/ConveyorBeltDemo.h
+	 Classes/Demos/DominosDemo.h
      )
 
 if(ANDROID)

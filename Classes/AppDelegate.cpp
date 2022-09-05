@@ -11,6 +11,7 @@
 #include "Demos/BaseDemo.h"
 #include "Demos/BodyTypesDemo.h"
 #include "Demos/BreakableBodyDemo.h"
+#include "Demos/ConveyorBeltDemo.h"
 
 // #define USE_AUDIO_ENGINE 1
 
@@ -92,7 +93,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //auto scene = AddPairTest::createScene();
     //auto scene = BaseDemo::createScene();
     //auto scene = BodyTypesDemo::createScene();
-    auto scene = BreakableBodyDemo::createScene();
+    //auto scene = BreakableBodyDemo::createScene();
+    auto scene = ConveyorBeltDemo::createScene();
 
     // run
     director->runWithScene(scene);
