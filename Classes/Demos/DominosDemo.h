@@ -18,8 +18,6 @@ public:
 
 	virtual bool init() override;
 
-	virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold) override;
-
 	CREATE_FUNC(DominosDemo);
 
 };
