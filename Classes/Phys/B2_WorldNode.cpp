@@ -15,6 +15,7 @@ B2WorldNode::B2WorldNode()
 
 B2WorldNode::~B2WorldNode()
 {
+	custScheduler->unscheduleAllForTarget(this);
 	delete _b2World;
 }
 

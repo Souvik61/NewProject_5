@@ -45,12 +45,18 @@ namespace rb {
         
         //Box
         
+        //Use initPolygonShapeSetAsBox not this!
         static void initPolygonShapeWithBox(b2PolygonShape& shape, float ptm_ratio, float hx, float hy, const Vec2& center, float angle);
+        //Use initPolygonShapeSetAsBox not this!
         static void initPolygonShapeWithBox(b2PolygonShape& shape, float ptm_ratio, float hx, float hy);
+
+        static void initPolygonShapeSetAsBox(b2PolygonShape& shape, float ptm_ratio, float hx, float hy);
+        static void initPolygonShapeSetAsBox(b2PolygonShape& shape, float ptm_ratio, float hx, float hy, const Vec2& center, float angle);
+
 
         //Edge
 
-        static void initEdgeShapeSetTwoSided(b2EdgeShape& shape, float ptm_ratio, Vec2 v1, Vec2 v2);
+        static void initEdgeShapeSetTwoSided(b2EdgeShape& shape, float ptm_ratio, const Vec2& v1, const Vec2& v2);
 
     };
 }

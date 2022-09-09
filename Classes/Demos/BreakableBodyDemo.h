@@ -30,6 +30,8 @@ public:
 
 	void Break();
 
+	void onRestart() override;
+
 	CREATE_FUNC(BreakableBodyDemo);
 
 };

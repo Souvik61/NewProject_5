@@ -20,6 +20,8 @@ public:
 
 	virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold) override;
 
+	void onRestart() override;
+
 	CREATE_FUNC(ConveyorBeltDemo);
 
 };

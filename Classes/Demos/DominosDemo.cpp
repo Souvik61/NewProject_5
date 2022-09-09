@@ -283,3 +283,9 @@ bool DominosDemo::init()
     
 	return true;
 }
+
+void DominosDemo::onRestart()
+{
+	auto sc = DominosDemo::createScene();
+	_director->replaceScene(sc);
+}

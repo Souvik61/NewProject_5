@@ -14,7 +14,7 @@ public:
 	static cocos2d::Scene* createScene();
 
 	virtual bool init() override;
-
+	void onRestart() override;
 
 	CREATE_FUNC(BodyTypesDemo);
 

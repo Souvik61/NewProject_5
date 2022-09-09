@@ -114,3 +114,9 @@ bool BodyTypesDemo::init()
 
     return true;
 }
+
+void BodyTypesDemo::onRestart()
+{
+    auto sc = BodyTypesDemo::createScene();
+    _director->replaceScene(sc);
+}

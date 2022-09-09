@@ -50,6 +50,9 @@ namespace rb {
         }
     
         //Joint helpers --pass by reference
+        
+        static void initDistanceJointDef(float ptm_ratio, b2DistanceJointDef& joint, B2PhysicsBody* bodyA, B2PhysicsBody* bodyB, const cocos2d::Vec2& anchorA, const cocos2d::Vec2& anchorB);
+        
         static void initRevoluteJointDef(float ptm_ratio,b2RevoluteJointDef& joint, B2PhysicsBody* bodyA, B2PhysicsBody* bodyB, const cocos2d::Vec2& anchor);
         
         static void initPrismaticJointDef(float ptm_ratio, b2PrismaticJointDef& def, B2PhysicsBody* bodyA, B2PhysicsBody* bodyB, cocos2d::Vec2 anchor, cocos2d::Vec2 axis);

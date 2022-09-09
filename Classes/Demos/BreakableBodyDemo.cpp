@@ -132,6 +132,12 @@ void BreakableBodyDemo::Break()
 
 }
 
+void BreakableBodyDemo::onRestart()
+{
+	auto sc = BreakableBodyDemo::createScene();
+	_director->replaceScene(sc);
+}
+
 void BreakableBodyDemo::Step(float)
 {
 	if (m_break)

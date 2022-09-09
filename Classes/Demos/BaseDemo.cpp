@@ -8,6 +8,12 @@
 USING_NS_CC;
 using namespace rb;
 
+BaseDemo::~BaseDemo()
+{
+    removeAllChildrenWithCleanup(true);//Important!! make sure all children are removed before WorldNode deletion
+    wN->release();
+}
+
 Scene* BaseDemo::createScene()
 {
     return BaseDemo::create();
@@ -35,6 +41,12 @@ bool BaseDemo::init()
     mListener->onMouseScroll = CC_CALLBACK_1(BaseDemo::onMouseScroll, this);
     mListener->onMouseMove = CC_CALLBACK_1(BaseDemo::onMouseMove, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(mListener, this);
+
+    //Add mouse event listener
+    kListener = EventListenerKeyboard::create();
+    kListener->onKeyPressed = CC_CALLBACK_2(BaseDemo::onKeyDown, this);
+    kListener->onKeyReleased = CC_CALLBACK_2(BaseDemo::onKeyUp, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(kListener, this);
 
     //Phys init stuff
 
@@ -180,4 +192,17 @@ void BaseDemo::onMouseMove(cocos2d::EventMouse* event)
     {
         m_mouseJoint->SetTarget(Utilities::convertToB2Vec2(100, p));
     }
+}
+
+void BaseDemo::onKeyDown(cocos2d::EventKeyboard::KeyCode key, cocos2d::Event* eve)
+{
+    if (key == EventKeyboard::KeyCode::KEY_R)
+    {
+        onRestart();
+    }
+}
+
+void BaseDemo::onKeyUp(cocos2d::EventKeyboard::KeyCode key, cocos2d::Event* eve)
+{
+   
 }

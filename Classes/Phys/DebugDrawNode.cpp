@@ -5,6 +5,12 @@
 USING_NS_CC;
 using namespace rb;
 
+rb::DebugDrawNode::~DebugDrawNode()
+{
+	_director->getEventDispatcher()->removeEventListener(_afterDraw);
+	_director->getEventDispatcher()->removeEventListener(_beforeUpdate);
+}
+
 bool rb::DebugDrawNode::init()
 {
 	if (!Node::init())
@@ -15,9 +21,11 @@ bool rb::DebugDrawNode::init()
 	_drawNode->setGlobalZOrder(9999999);
 	this->addChild(_drawNode);
 
-	//Add after draw callback to cleanup drawNode geometry.
-	_afterDraw = _director->getEventDispatcher()->addCustomEventListener(Director::EVENT_AFTER_DRAW, CC_CALLBACK_1(DebugDrawNode::afterDrawCallback, this));
-	
+	//Add after draw callback to clear drawNode geometry.
+	_beforeUpdate = _director->getEventDispatcher()->addCustomEventListener(Director::EVENT_BEFORE_UPDATE, CC_CALLBACK_1(DebugDrawNode::beforeUpdateCallback, this));
+	//_afterDraw = _director->getEventDispatcher()->addCustomEventListener(Director::EVENT_AFTER_DRAW, CC_CALLBACK_1(DebugDrawNode::afterDrawCallback, this));
+	scheduleUpdate();
+
 	return true;
 }
 
@@ -74,8 +82,14 @@ void rb::DebugDrawNode::DrawPoint(const b2Vec2& p, float size, const b2Color& co
 
 void rb::DebugDrawNode::afterDrawCallback(cocos2d::EventCustom*)
 {
+	//_drawNode->clear();
+}
+
+void rb::DebugDrawNode::beforeUpdateCallback(cocos2d::EventCustom*)
+{
 	_drawNode->clear();
 }
+
 
 rb::DebugDrawNode* rb::DebugDrawNode::create()
 {

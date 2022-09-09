@@ -50,7 +50,7 @@ namespace rb {
         inline b2World* getB2World() { return _b2World; };
 
         void setDebugDrawNode(DebugDrawNode* dN);
-        void setStepCallback(const std::function<void(float)>& c) { _hasStepCallback = true; _stepCallback = c; };
+        void setStepCallback(const std::function<void(float)> c) { _hasStepCallback = true; _stepCallback = c; };
 
         //static B2WorldNode* create(Vec2 ptm_ratio);
         static B2WorldNode* create(float ptm_ratio, Vec2 gravity);

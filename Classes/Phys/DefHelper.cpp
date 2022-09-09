@@ -53,6 +53,11 @@ b2WheelJointDef rb::DefHelper::createWheelJointDef(float ptm, B2PhysicsBody* bod
 	return def;
 }
 
+void rb::DefHelper::initDistanceJointDef(float ptm_ratio, b2DistanceJointDef& joint, B2PhysicsBody* bA, B2PhysicsBody* bB, const cocos2d::Vec2& ancA, const cocos2d::Vec2& ancB)
+{
+	joint.Initialize(bA->getBox2dBody(), bB->getBox2dBody(), CCTOB2VEC2(ancA), CCTOB2VEC2(ancB));
+}
+
 void rb::DefHelper::initRevoluteJointDef(float ptm, b2RevoluteJointDef& j, B2PhysicsBody* bodyA, B2PhysicsBody* bodyB,const cocos2d::Vec2& anc)
 {
 	j.Initialize(bodyA->getBox2dBody(), bodyB->getBox2dBody(), Utilities::convertToB2Vec2(ptm, anc));

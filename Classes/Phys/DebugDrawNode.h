@@ -14,6 +14,7 @@ namespace rb {
         cocos2d::DrawNode* _drawNode;
         B2WorldNode* _worldNode;
     public:
+        ~DebugDrawNode();
 
         virtual bool init() override;
 
@@ -28,12 +29,14 @@ namespace rb {
         void DrawPoint(const b2Vec2& p, float size, const b2Color& color);
 
         void afterDrawCallback(cocos2d::EventCustom*);
+        void beforeUpdateCallback(cocos2d::EventCustom*);
 
         //Create methods
         static DebugDrawNode* create();
 
 
         // Event for after draw 
+        cocos2d::EventListenerCustom* _beforeUpdate;
         cocos2d::EventListenerCustom* _afterDraw;
     };
 }

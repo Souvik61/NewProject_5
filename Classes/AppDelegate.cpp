@@ -13,6 +13,10 @@
 #include "Demos/BreakableBodyDemo.h"
 #include "Demos/ConveyorBeltDemo.h"
 #include "Demos/DominosDemo.h"
+#include "Demos/PinballDemo.h"
+#include "Demos/SliderCrank2Demo.h"
+#include "Demos/TheoJansenDemo.h"
+#include "Demos/WreckingBallDemo.h"
 
 // #define USE_AUDIO_ENGINE 1
 
@@ -96,7 +100,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //auto scene = BodyTypesDemo::createScene();
     //auto scene = BreakableBodyDemo::createScene();
     //auto scene = ConveyorBeltDemo::createScene();
-    auto scene = DominosDemo::createScene();
+    //auto scene = DominosDemo::createScene();
+    //auto scene = PinballDemo::createScene();
+    //auto scene = SliderCrank2Demo::createScene();
+    //auto scene = TheoJansenDemo::createScene();
+    auto scene = WreckingBallDemo::createScene();
 
     // run
     director->runWithScene(scene);

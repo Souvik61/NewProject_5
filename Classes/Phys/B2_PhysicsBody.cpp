@@ -1,3 +1,4 @@
+#include "Phys/RbMacros.h"
 #include "B2_PhysicsBody.h"
 #include "box2d/include/box2d/box2d.h"
 #include "Phys/B2_WorldNode.h"
@@ -55,6 +56,12 @@ void rb::B2PhysicsBody::onAdd()
 void B2PhysicsBody::update(float)
 {
     // updatePos();
+    updateTransform();
+}
+
+void rb::B2PhysicsBody::setTransform(const Vec2& pos, float angle)
+{
+    _body->SetTransform(CCTOB2VEC2(pos), angle);
     updateTransform();
 }
 

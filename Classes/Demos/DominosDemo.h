@@ -18,6 +18,8 @@ public:
 
 	virtual bool init() override;
 
+	void onRestart() override;
+
 	CREATE_FUNC(DominosDemo);
 
 };

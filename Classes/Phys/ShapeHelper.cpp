@@ -164,7 +164,17 @@ void rb::ShapeHelper::initPolygonShapeWithBox(b2PolygonShape& shape, float ptm, 
 	shape.SetAsBox(hx / ptm, hy / ptm);
 }
 
-void rb::ShapeHelper::initEdgeShapeSetTwoSided(b2EdgeShape& shape, float ptm, Vec2 v1, Vec2 v2)
+void rb::ShapeHelper::initPolygonShapeSetAsBox(b2PolygonShape& shape, float ptm, float hx, float hy)
+{
+	shape.SetAsBox(hx / ptm, hy / ptm);
+}
+
+void rb::ShapeHelper::initPolygonShapeSetAsBox(b2PolygonShape& shape, float ptm, float hx, float hy, const Vec2& c, float ang)
+{
+	shape.SetAsBox(hx / ptm, hy / ptm, CCTOB2VEC2(c), ang);
+}
+
+void rb::ShapeHelper::initEdgeShapeSetTwoSided(b2EdgeShape& shape, float ptm, const Vec2& v1, const Vec2& v2)
 {
 	shape.SetTwoSided(Utilities::convertToB2Vec2(ptm, v1), Utilities::convertToB2Vec2(ptm, v2));
 }

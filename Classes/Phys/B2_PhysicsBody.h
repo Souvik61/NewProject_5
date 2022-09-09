@@ -49,6 +49,9 @@ USING_NS_CC;
             void setWorldNode(B2WorldNode* world) { _b2World = world; };
             b2Body* getBox2dBody() { return _body; };
 
+            //set body transform in cocos2d coordinates
+            void setTransform(const Vec2& position,float angle);
+
             //Use cocos2d coords.This method will ignore collisions
             void setPosition(cocos2d::Vec2 position);
             //Faster than Vec2 version

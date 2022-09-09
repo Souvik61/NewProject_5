@@ -104,3 +104,9 @@ void ConveyorBeltDemo::PreSolve(b2Contact* contact, const b2Manifold* oldManifol
 	//CCLOG("Pre Solve");
 }
 
+void ConveyorBeltDemo::onRestart()
+{
+	auto sc = ConveyorBeltDemo::createScene();
+	_director->replaceScene(sc);
+}
+

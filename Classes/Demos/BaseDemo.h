@@ -60,15 +60,19 @@ protected:
 	Vec2 touchStart, prevTouch, origin;
 	Size visibleSize, winSize;
 	EventListenerMouse* mListener;
+	EventListenerKeyboard* kListener;
 	rb::B2WorldNode* wN;
 
 	//test
 	Vec2 camStart, camOffset;
 public:
+	~BaseDemo();
+
 	static cocos2d::Scene* createScene();
 
 	virtual bool init();
 
+	virtual void onRestart() {};
 
 	// implement the "static create()" method manually
 	CREATE_FUNC(BaseDemo);
@@ -82,6 +86,9 @@ public:
 	void onMouseUp(cocos2d::EventMouse* event);
 	void onMouseScroll(cocos2d::EventMouse* event);
 
+	//Keyboard inputs
+	virtual void onKeyDown(cocos2d::EventKeyboard::KeyCode,cocos2d::Event*);
+	virtual void onKeyUp(cocos2d::EventKeyboard::KeyCode,cocos2d::Event*);
 
 	//test
 
