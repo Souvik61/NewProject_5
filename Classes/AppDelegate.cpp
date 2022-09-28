@@ -95,7 +95,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //auto scene = PyramidTest::createScene();
     //auto scene = BoxStackTest::createScene();
     //auto scene = CircleStackTest::createScene();
-    //auto scene = AddPairTest::createScene();
+    auto scene = AddPairTest::createScene();
     //auto scene = BaseDemo::createScene();
     //auto scene = BodyTypesDemo::createScene();
     //auto scene = BreakableBodyDemo::createScene();
@@ -104,7 +104,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //auto scene = PinballDemo::createScene();
     //auto scene = SliderCrank2Demo::createScene();
     //auto scene = TheoJansenDemo::createScene();
-    auto scene = WreckingBallDemo::createScene();
+    //auto scene = WreckingBallDemo::createScene();
 
     // run
     director->runWithScene(scene);
