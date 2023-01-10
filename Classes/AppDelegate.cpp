@@ -1,6 +1,8 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
 #include "Tests/TestScene1.h"
+#include "Tests/TestScene2.h"
+#include "Tests/TestScene3.h"
 #include "Tests/TestScene4.h"
 #include "Tests/TestScene5.h"
 #include "Tests/TestScene6.h"
@@ -91,11 +93,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //auto scene = TestScene2::createScene();
     //auto scene = TestScene3::createScene();
     //auto scene = TestScene4::createScene();
-    //auto scene = TestScene5::createScene();
+    auto scene = TestScene5::createScene();
     //auto scene = PyramidTest::createScene();
     //auto scene = BoxStackTest::createScene();
     //auto scene = CircleStackTest::createScene();
-    auto scene = AddPairTest::createScene();
+    //auto scene = AddPairTest::createScene();
     //auto scene = BaseDemo::createScene();
     //auto scene = BodyTypesDemo::createScene();
     //auto scene = BreakableBodyDemo::createScene();
